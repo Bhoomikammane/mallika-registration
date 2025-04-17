@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G M University presents</title>
+    <style>p{font-family:"Times New Roman",
+        serif;
+    font-style:italic;}
+        
+        body {
+            background-color: #efe8e8;
+            
+           
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: rgb(0, 0, 0);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        
+       
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: #c187ae;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            padding: 1rem 1.5rem;
+        }
+        
+        nav a {
+            color: rgb(232, 236, 239);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ae00f9;
+        }
+        
+        .hero {
+            background-image: url('https://www.agarum.com/photos/1/2/47/692/c/l/7995f477fc54ef71332224a58f87a643.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(244, 239, 239);
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(17, 17, 17, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #8e44ad;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #7d3c98;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #f6f1f1;
+        }
+        
+        
+        .events-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .countdown-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #fff;
+
+    padding: 0.8rem 1.2rem;
+    
+    display: auto;
+}
+
+        
+        .events-category {
+            margin-bottom: 4rem;
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #8e44ad;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: #8e44ad;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background-color:  #f2eff3;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.5s;
+        }
+        
+        .event-card:hover {
+            transform: translatey(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .event-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #8e44ad;
+        }
+        
+        .event-desc {
+            margin-bottom: 1.5rem;
+            color: #0b0b0b;
+            line-height: 1.6;
+        }
+        
+        .know-more {
+            display: inline-block;
+            color: #8e44ad;
+            font-weight: bold;
+            text-decoration: none;
+            
+            margin-right: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .know-more:hover {
+            color: #3498db;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .modal.show {
+            display: block;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: #ede6f0;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 800px;
+            transition: transform 0.3s;
+            transform: translateY(-50px);
+            position: relative;
+        }
+        
+        .modal.show .modal-content {
+            transform: translate(0);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #fefefe;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #8e44ad;
+        }
+        
+        .modal-details {
+            margin-bottom: 2rem;
+        }
+        
+        .modal-details p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Form styles */
+        .registration-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: #8e44ad;
+            outline: none;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .submit-btn {
+            background-color: #8e44ad;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #7d3c98;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #8e44ad;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">MALLIKA</div>
+        <div class="tagline">Annual College Cultural Fest</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h>G M UNIVERSITY</h>
+            <h1>MALLIKA 2025</h1>
+            
+            <p>Experience the cultural extravaganza with pre-stage and on-stage events that will leave you mesmerized!</p>
+            <a href="#register" class="btn">Register Now</a>
+            <div id="countdown" class="countdown-timer"></div>
+
+        </div>
+    </section>
+    
+    <section id="events" style="background-image:url('https://images.freecreatives.com/wp-content/uploads/2016/04/Solid-Black-Website-Background.jpg')">
+
+        <h2 class="section-title">Our Events </h2>
+        
+        <div class="events-container">
+            <div class="events-category">
+                <h3 class="category-title">Pre-Stage Events</h3>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-img" style="background-image: url('https://i.pinimg.com/originals/43/90/30/439030ceb55c3b91c43f9765fc3bbc6a.jpg');"></div>
+                        <div class="event-content">
+                            <h4 class="event-title">Rangoli Competition</h4>
+                            <p class="event-desc">Showcase your artistic skills through vibrant and creative rangoli designs. Themes will be announced on the spot.</p>
+                            <a href="javascript:void(0)" class="know-more" data-event="rangoli">Know More</a>
+                            <a href="#register" class="know-more">Register</a>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-img" style="background-image: url('https://static.vecteezy.com/system/resources/previews/004/758/956/original/stand-up-comedy-banner-with-red-curtains-background-free-vector.jpg');"></div>
+                        <div class="event-content">
+                            <h4 class="event-title">Standup Comedy</h4>
+                            <p class="event-desc">Got jokes? Show off your humor and make everyone laugh with your witty comedy performance.</p>
+                            <a href="javascript:void(0)" class="know-more" data-event="comedy">Know More</a>
+                            <a href="#register" class="know-more">Register</a>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-img" style="background-image: url('https://i.pinimg.com/originals/9f/7a/4b/9f7a4b6d640680e970f437d5d2ffa85c.jpg');"></div>
+                        <div class="event-content">
+                            <h4 class="event-title">Face Art</h4>
+                            <p class="event-desc">Transform faces into works of art with your creative face painting skills. Individual participation.</p>
+                            <a href="javascript:void(0)" class="know-more" data-event="faceart">Know More</a>
+                            <a href="#register" class="know-more">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="events-category">
+                <h3 class="category-title">On-Stage Events</h3>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-img" style="background-image: url('https://criticaldance.org/wpnew/wp-content/uploads/2017/02/Dancing-Honeymoon_Jacobs-Pillow-2011_Christopher-Duggan-4-1.jpg');"></div>
+                        <div class="event-content">
+                            <h4 class="event-title">Group Dance</h4>
+                            <p class="event-desc">Set the stage on fire with your group dance performance. Show your coordination and choreography skills.</p>
+                            <a href="javascript:void(0)" class="know-more" data-event="groupdance">Know More</a>
+                            <a href="#register" class="know-more">Register</a>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-img" style="background-image: url('https://st2.depositphotos.com/1001951/8219/i/450/depositphotos_82196892-stock-photo-multiracial-music-band-in-a.jpg0');"></div>
+                        <div class="event-content">
+                            <h4 class="event-title">Group Singing</h4>
+                            <p class="event-desc">Harmonize with your team and captivate the audience with your melodious group singing performance.</p>
+                            <a href="javascript:void(0)" class="know-more" data-event="groupsinging">Know More</a>
+                            <a href="#register" class="know-more">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="register"style="background-image:url('https://images.freecreatives.com/wp-content/uploads/2016/04/Solid-Black-Website-Background.jpg')">
+        <h2 class="section-title">Registration</h2>
+        <div class="registration-form">
+            <form id="event-registration-form">
+                <div class="form-group">
+                    <label for="participant-name">Name</label>
+                    <input type="text" id="participant-name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="participant-email">Email</label>
+                    <input type="email" id="participant-email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="participant-phone">Phone Number</label>
+                    <input type="tel" id="participant-phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="participant-college">College Name</label>
+                    <input type="text" id="participant-college" name="college" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-select">Select Event</label>
+                    <select id="event-select" name="event" required>
+                        <option value="">-- Select an Event --</option>
+                        <option value="rangoli">Rangoli Competition</option>
+                        <option value="comedy">Standup Comedy</option>
+                        <option value="faceart">Face Art</option>
+                        <option value="groupdance">Group Dance</option>
+                        <option value="groupsinging">Group Singing</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="team-section" style="display:none;">
+                    <label for="team-name">Team Name (For group events)</label>
+                    <input type="text" id="team-name" name="team-name">
+                    
+                    <label for="team-members">Team Members (Comma separated names)</label>
+                    <textarea id="team-members" name="team-members" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="participant-comments">Additional Comments</label>
+                    <textarea id="participant-comments" name="comments" rows="3"></textarea>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms-checkbox" name="terms" required>
+                    <label for="terms-checkbox">I agree to the terms and conditions</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Registration</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="contact"style="background-image:url('https://images.freecreatives.com/wp-content/uploads/2016/04/Solid-Black-Website-Background.jpg')">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="registration-form">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Name</label>
+                    <input type="text" id="contact-name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-subject">Subject</label>
+                    <input type="text" id="contact-subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-message">Message</label>
+                    <textarea id="contact-message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MALLIKA</div>
+            <p>Annual College Cultural Fest</p>
+            <iframe
+  src="https://www.google.com/maps/place/GM+UNIVERSITY/@14.4755957,75.8821258,17z/data=!3m1!4b1!4m6!3m5!1s0x3bba2f6e57495365:0xa0bd45753e7a0022!8m2!3d14.4755957!4d75.8847007!16s%2Fg%2F11fxcgfhhw?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoASAFQAw%3D%3D"
+  width="600"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+            
+            <div class="social-links">
+                <a href="#" target="_blank">F</a>
+                <a href="#" target="_blank">I</a>
+                <a href="#" target="_blank">T</a>
+                <a href="#" target="_blank">Y</a>
+            </div>
+            
+            <p class="copyright">© 2025 Mallika College Fest. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Event Details Modals -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 class="modal-title" id="modal-event-title"></h3>
+            <div class="modal-details" id="modal-event-details"></div>
+            <a href="#register" class="btn" id="modal-register-btn">Register Now</a>
+        </div>
+    </div>
+    
+    <script>
+        // Show/hide team section based on event selection
+        document.getElementById('event-select').addEventListener('change', function() {
+            const teamSection = document.getElementById('team-section');
+            const selectedEvent = this.value;
+            
+            if (selectedEvent === 'groupdance' || selectedEvent === 'groupsinging') {
+                teamSection.style.display = 'block';
+                document.getElementById('team-name').required = true;
+                document.getElementById('team-members').required = true;
+            } else {
+                teamSection.style.display = 'none';
+                document.getElementById('team-name').required = false;
+                document.getElementById('team-members').required = false;
+            }
+        });
+        
+        // Event details modal functionality
+        const modal = document.getElementById('event-modal');
+        const modalTitle = document.getElementById('modal-event-title');
+        const modalDetails = document.getElementById('modal-event-details');
+        const closeBtn = document.querySelector('.close-btn');
+        const modalRegisterBtn = document.getElementById('modal-register-btn');
+        
+        // Event details data
+        const eventDetails = {
+            rangoli: {
+                title: "Rangoli Competition",
+                details: `
+                    <p><strong>Date & Time:</strong> May 15, 2025 | 10:00 AM</p>
+                    <p><strong>Venue:</strong> College Campus Open Area</p>
+                    <p><strong>Duration:</strong> 2 hours</p>
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>Individual participation only</li>
+                        <li>Theme will be announced 1 day before the event</li>
+                        <li>Basic color powders will be provided, participants can bring their own additional materials</li>
+                        <li>Size: 3ft x 3ft space will be provided</li>
+                        <li>Judging criteria: Creativity, Neatness, Color combination, and Theme relevance</li>
+                    </ul>
+                    <p><strong>Prizes:</strong> 1st Prize: ₹3,000 | 2nd Prize: ₹1,500 | 3rd Prize: ₹1,000</p>
+                    <p><strong>Coordinators:</strong> Priya Sharma (98765-43210)</p>
+                `
+            },
+            comedy: {
+                title: "Standup Comedy",
+                details: `
+                    <p><strong>Date & Time:</strong> May 15, 2025 | 2:00 PM</p>
+                    <p><strong>Venue:</strong> College Auditorium</p>
+                    <p><strong>Duration:</strong> 5-7 minutes per participant</p>
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>Individual participation only</li>
+                        <li>Content must be original and not offensive</li>
+                        <li>Performance should be in English or Hindi</li>
+                        <li>Props are allowed but not mandatory</li>
+                        <li>Judging criteria: Originality, Audience engagement, Delivery, and Humor quality</li>
+                    </ul>
+                    <p><strong>Prizes:</strong> 1st Prize: ₹5,000 | 2nd Prize: ₹2,500 | 3rd Prize: ₹1,500</p>
+                    <p><strong>Coordinators:</strong> Rahul Verma (97865-43210)</p>
+                `
+            },
+            faceart: {
+                title: "Face Art",
+                details: `
+                    <p><strong>Date & Time:</strong> May 16, 2025 | 11:00 AM</p>
+                    <p><strong>Venue:</strong> College Art Studio</p>
+                    <p><strong>Duration:</strong> 1.5 hours</p>
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>Participants need to bring their own model</li>
+                        <li>Participants must bring their own face painting materials and brushes</li>
+                        <li>Theme: "Fantasy World"</li>
+                        <li>No pre-work or stencils allowed</li>
+                        <li>Judging criteria: Creativity, Technique, Neatness, and Theme interpretation</li>
+                    </ul>
+                    <p><strong>Prizes:</strong> 1st Prize: ₹4,000 | 2nd Prize: ₹2,000 | 3rd Prize: ₹1,000</p>
+                    <p><strong>Coordinators:</strong> Neha Gupta (98765-12340)</p>
+                `
+            },
+            groupdance: {
+                title: "Group Dance",
+                details: `
+                    <p><strong>Date & Time:</strong> May 16, 2025 | 5:00 PM</p>
+                    <p><strong>Venue:</strong> Main Stage</p>
+                    <p><strong>Duration:</strong> 5-7 minutes per team</p>
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>Team size: 5-12 members</li>
+                        <li>Any dance form is acceptable</li>
+                        <li>Music should be submitted 2 days before the event in MP3 format</li>
+                        <li>Props are allowed but should be arranged by the team</li>
+                        <li>Judging criteria: Choreography, Synchronization, Stage utilization, Costume, and Overall impact</li>
+                    </ul>
+                    <p><strong>Prizes:</strong> 1st Prize: ₹10,000 | 2nd Prize: ₹7,000 | 3rd Prize: ₹5,000</p>
+                    <p><strong>Coordinators:</strong> Ankit Sharma (97865-10932) & Divya Patel (98123-45670)</p>
+                `
+            },
+            groupsinging: {
+                title: "Group Singing",
+                details: `
+                    <p><strong>Date & Time:</strong> May 17, 2025 | 3:00 PM</p>
+                    <p><strong>Venue:</strong> Main Stage</p>
+                    <p><strong>Duration:</strong> 4-6 minutes per team</p>
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>Team size: 3-8 members</li>
+                        <li>Language options: Hindi, English, or Regional</li>
+                        <li>Basic instruments will be provided (Guitar, Keyboard, Tabla)</li>
+                        <li>Teams can bring their own instruments if required</li>
+                        <li>Karaoke tracks allowed but with prior approval</li>
+                        <li>Judging criteria: Harmony, Voice quality, Coordination, Song selection, and Overall performance</li>
+                    </ul>
+                    <p><strong>Prizes:</strong> 1st Prize: ₹8,000 | 2nd Prize: ₹5,000 | 3rd Prize: ₹3,000</p>
+                    <p><strong>Coordinators:</strong> Shreya Mishra (90876-54321) & Rohit Kumar (98765-43211)</p>
+                    
+                `
+            }
+        };
+        
+        // Open modal with event details
+        document.querySelectorAll('.know-more[data-event]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const eventId = this.getAttribute('data-event');
+                const event = eventDetails[eventId];
+                
+                if (event) {
+                    modalTitle.innerText = event.title;
+                    modalDetails.innerHTML = event.details;
+                    modal.classList.add('show');
+                    
+                    // Scroll to register section when clicking "Register Now" in modal
+                    modalRegisterBtn.addEventListener('click', function() {
+                        modal.classList.remove('show');
+                        document.getElementById('event-select').value = eventId;
+                        
+                        // Trigger the change event to show/hide team sections
+                        const changeEvent = new Event('change');
+                        document.getElementById('event-select').dispatchEvent(changeEvent);
+                    });
+                }
+            });
+        });
+        
+        // Close modal
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+        });
+        
+        // Close modal when clicking outside the content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+        
+        // Form submission handlers
+        document.getElementById('event-registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for registering! We will contact you with further details soon.');
+            this.reset();
+        });
+        
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+    <script>
+        // Set the date for the event (example: May 15, 2025 10:00 AM)
+        const eventDate = new Date("May 15, 2025 10:00:00").getTime();
+    
+        const countdownElement = document.getElementById("countdown");
+    
+        const countdownTimer = setInterval(() => {
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+    
+            if (timeLeft <= 0) {
+                clearInterval(countdownTimer);
+                countdownElement.innerHTML = "🎉 The event has started!";
+            } else {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    
+                countdownElement.innerHTML = 
+                    `Starts in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }, 1000);
+    </script>
+    
+</body>
+</html>
